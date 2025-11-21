@@ -1,3 +1,23 @@
-body{
+body, html{
     background-color: #fffdf2;
+
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 45%;
+}
+h1{
+    text-align: center;
+    font-size: 275%;
+}
+.menu{
+    background-color: #aaa;
+    width: 50vw;
+    height: 50vh;
+    padding-top: 5vh;
+    border-radius: 20px;
+    margin: 20px auto;
 }
