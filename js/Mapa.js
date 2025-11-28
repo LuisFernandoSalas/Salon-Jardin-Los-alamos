@@ -1,7 +1,7 @@
 
   // Coordenadas de tu ubicación predeterminada (ejemplo: Puebla, México)
-  var lat = 19.0413;
-  var lng = -98.2062;
+  var lat = 19.202744;
+  var lng = -98.432813;
 
   // Crear mapa centrado en tu ubicación
   var map = L.map('map').setView([lat, lng], 15);
