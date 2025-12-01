@@ -16,9 +16,143 @@ h1{
 }
 .menu{
     background-color: #aaa;
-    width: 90vw;
-    height: 30vh;
-    padding-top: 5vh;
-    border-radius: 20px;
-    margin: 20px auto;
+    width: 100%;
+    height: auto;
+    padding-top: 2%;
+}
+.map{
+    border-radius: 5%;
+    width: 400px;
+    height: 400px;
+    /*Centrar el mapa*/
+    margin: auto;
+    margin-top: 2%;
+}
+.images{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.images .thumb{
+  flex: 0 0 calc(100% / 7);
+  max-width: calc(100% / 7);
+  overflow: hidden;
+  transition: transform 200ms ease, opacity 200ms ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.images .thumb img{
+  margin: 1%;
+  width: 300px;
+  height: auto;          /* ajustar según preferencia */
+  max-height: 120px;
+  object-fit: cover;
+  display: block;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  transform-origin: center center;
+}
+
+/* Hover: agranda ligeramente */
+.images .thumb:hover img{
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+/* Clase activa al hacer clic: agranda más y eleva sobre las demás */
+.images .thumb.active{
+  transform: scale(1.02);
+  z-index: 3;
+}
+.images .thumb.active img{
+  transform: scale(1.35);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Opcional: desactivar énfasis en las no activas cuando hay una activa */
+.images.has-active .thumb:not(.active){
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+/* Responsive: en pantallas pequeñas pasar a varias filas */
+@media (max-width: 600px){
+  .images{
+    flex-wrap: wrap;
+  }
+  .images .thumb{
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+  .images .thumb img{
+    height: 90px;
+  }
+}
+/*Fondo oscuro*/
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+/*Imagen grande*/
+.modal-contenido{
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+/*Botón cerrar*/
+.cerrar{
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.cerrar:hoveer{
+    color: #bbb;
+}
+/*Diseño de botones*/
+.nav-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+    margin: 5%;
+}
+.nav-btn:hover{
+    background: rgba(0,0,0,0.6);
+}
+.nav-btn.left{
+    left: 10px;
+}
+.nav-btn.right{
+    right: 10px;
 }
