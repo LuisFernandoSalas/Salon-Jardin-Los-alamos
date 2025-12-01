@@ -1,22 +1,23 @@
 body, html{
     margin: 1%;
     /*background-color: #e4e4e4;*/
-    background-image: url('../img/background.jpg');
+    background-image: url('../img/backgrounGarden.webp');
+    background-repeat:  no-repeat;
 }
 
 .logo{
     width: 100px;
     height: 100px;
     position: relative;
-    left: 45%;
+    left: 20%;
     border-radius: 5%;
 }
 h1{
-    text-align: center;
+    text-align:center;
     font-size: 275%;
 }
 .menu{
-    background-color: #ffffffb7;
+    background-color: #d4c2b3b7;
     width: 100%;
     height: auto;
     padding-top: 1%;
@@ -31,7 +32,7 @@ h1{
 }
 .images{
   padding: 2%;
-  background-color: #ffffffb7;
+  background-color: #d4c2b3b7;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -164,7 +165,7 @@ h1{
     margin: 2%;
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #ffffffb7;
+    background-color: #d4c2b3b7;
     padding: 2%;
     border-radius: 8px;
 }
