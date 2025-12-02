@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../img/Fashion.png" type="image/x-icon">
+    <title>Galeria del salon </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</head>
+<body>
+
+    <div class="menu">
+        <img src="../img/Fashion.png" class="logo" alt="">
+        <h1>Salon jardin "El Alamo"</h1>
+    </div>
+    
+    <div class="bar">
+        <a href="index.htm">Inicio</a>
+        <a href="galeri.html">Galeria</a>
+        <a href="contact-location.html">Contacto/Ubicacion</a>
+    </div>
+
+    <div class="images">
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.06.jpeg" alt="imagen 1"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.07.jpeg" alt="imagen 2"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.08 (1).jpeg" alt="imagen 3"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.08 (2).jpeg" alt="imagen 4"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.08 (3).jpeg" alt="imagen 5"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.08.jpeg" alt="imagen 6"></div>
+        <div class="thumb"><img src="../img/WhatsApp Unknown 2025-11-20 at 08.16.59/WhatsApp Image 2025-11-20 at 07.21.09.jpeg" alt="imagen 7"></div>
+    </div>
+
+    <!--Modal para ver imagen grande-->
+    <div class="modal" id="modal">
+        <span class="cerrar" id="cerrar">&times;</span>
+        <img class="modal-contenido" id="modal-img" alt="Imagen ampliada">
+        <!--Botón para cambiar de imagen-->
+        <button id="prevBtn" class="nav-btn left">⟨</button>
+        <button id="nextBtn" class="nav-btn right">⟩</button>
+    </div>
+
+</body>
+<script src="../js/thumbs.js"></script>
+</html>
