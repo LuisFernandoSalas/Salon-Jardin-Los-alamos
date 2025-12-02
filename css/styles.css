@@ -2,7 +2,7 @@ body, html{
     margin: 1%;
     /*background-color: #e4e4e4;*/
     background-image: url('../img/backgrounGarden.webp');
-    background-repeat:  no-repeat;
+    background-size: cover;
 }
 
 .logo{
@@ -17,10 +17,29 @@ h1{
     font-size: 275%;
 }
 .menu{
-    background-color: #d4c2b3b7;
-    width: 100%;
-    height: auto;
-    padding-top: 1%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1%;
+  width: 92%;
+  margin: 2%; /* centra la barra del menú en la página */
+}
+.menu .logo{
+  width: 100px;   /* tamaño a la izquierda */
+  height: auto;
+  display: block;
+  position: static; /* quitar cualquier desplazamiento anterior */
+  left: auto;
+  border-radius: 5%;
+}
+
+/* Forzar que el h1 dentro del menú quede alineado a la derecha del logo */
+.menu h1{
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.1;
+  text-align: left;
+  flex: 1; /* ocupa el espacio restante sin empujar el logo */
 }
 .map{
     border-radius: 5%;
@@ -168,4 +187,30 @@ h1{
     background-color: #d4c2b3b7;
     padding: 2%;
     border-radius: 8px;
+}
+/* Estilos para enlaces */
+a {
+    color: #ffddbc;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+/* Estilos para barra de menú*/
+.bar{
+    padding: 1%;
+    background-color: #333;
+    display: flex;
+    justify-content: center; /* centra horizontalmente los enlaces */
+    align-items: center;     /* centra verticalmente si cambian tamaños */
+    gap: 24px;               /* espacio entre enlaces */
+    width: 98%;
+             /* centra la barra en la página */
+}
+/* pequeño ajuste para los enlaces dentro de la barra */
+.bar a{
+    color: #ffddbc;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 20px;
 }
