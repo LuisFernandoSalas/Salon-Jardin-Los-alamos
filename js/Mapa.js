@@ -1,17 +1,48 @@
+// Coordenadas del salón (ejemplo: Puebla, México)
+var lat = 19.202744;
+var lng = -98.432813;
 
-  // Coordenadas de tu ubicación predeterminada (ejemplo: Puebla, México)
-  var lat = 19.202744;
-  var lng = -98.432813;
+// Crear mapa centrado en el salón
+var map = L.map('map').setView([lat, lng], 15);
 
-  // Crear mapa centrado en tu ubicación
-  var map = L.map('map').setView([lat, lng], 15);
+// Agregar capa base (OpenStreetMap)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-  // Agregar capa de mapa (OpenStreetMap)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+// Marcador en el salón
+L.marker([lat, lng]).addTo(map)
+  .bindPopup('Salón Jardín Los Álamos')
+  .openPopup();
 
-  // Agregar marcador en tu ubicación
-  L.marker([lat, lng]).addTo(map)
-    .bindPopup('Salon Jardín Los Álamos')
-    .openPopup();
+// Obtener ubicación del usuario y mostrar ruta
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var userLat = position.coords.latitude;
+    var userLng = position.coords.longitude;
+
+    // Marcador del usuario
+    L.marker([userLat, userLng]).addTo(map)
+      .bindPopup("Tu ubicación")
+      .openPopup();
+
+    // Dibujar ruta con Leaflet Routing Machine
+    L.Routing.control({
+      waypoints: [
+        L.latLng(userLat, userLng), // inicio: usuario
+        L.latLng(lat, lng)          // destino: salón
+      ],
+      routeWhileDragging: true,
+      language: 'es',
+      showAlternatives: true,
+      lineOptions: {
+        styles: [{color: 'blue', opacity: 0.7, weight: 5}]
+      }
+    }).addTo(map);
+  }, function(error) {
+    console.error("Error de geolocalización:", error);
+    alert("No se pudo obtener tu ubicación.");
+  });
+} else {
+  alert("Tu navegador no soporta geolocalización.");
+}
