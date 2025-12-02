@@ -44,13 +44,67 @@ h1{
   text-align: left;
   flex: 1; /* ocupa el espacio restante sin empujar el logo */
 }
+/* Contenedor principal para alinear mapa y contacto en fila */
+.contact-container{
+  display: flex;
+  flex-direction: row-reverse; /* invierte el orden: mapa a la derecha */
+  gap: 40px;
+  width: 92%;
+  margin: 2% auto;
+  padding: 20px;
+}
+
+/* Mapa a la derecha */
 .map{
-    border-radius: 5%;
-    width: 400px;
-    height: 400px;
-    /*Centrar el mapa*/
-    margin: auto;
-    margin-top: 2%;
+  border-radius: 5%;
+  width: 900px;              /* reduce el ancho del mapa */
+  height: 500px;             /* reduce la altura también */
+  flex-shrink: 0;
+             /* centra el mapa dentro de su espacio */
+}
+/* Contacto y redes a la izquierda */
+.contact-links{
+  flex: 0 0 400px;           /* ancho fijo para contacto */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* alinea al inicio (arriba) */
+  align-items: flex-start;
+}
+.contact-links h3{
+  margin-top: 0;             /* elimina margen superior */
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.contact-links a{
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #333;
+}
+.contact-links a:hover{
+  text-decoration: underline;
+}
+/* Sección de información alineada a la izquierda */
+.text{
+  width: 92%;
+  margin: 2% auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.text h2{
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.text p{
+  text-align: left;
+  margin-left: 7%;      /* sangría para párrafos */
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.6;
 }
 .images{
   padding: 2%;
@@ -219,4 +273,7 @@ a:hover {
 }
 a{
   color: #333;
+}
+.contactText{
+  margin-top: 10%;
 }
