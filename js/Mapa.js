@@ -23,35 +23,74 @@ document.addEventListener('DOMContentLoaded', function() {
     .bindPopup('Salón Jardín Los Álamos')
     .openPopup();
 
-  // Obtener ubicación del usuario y mostrar ruta
-  if (navigator.geolocation) {
+  // Control de ruta (para poder quitarlo si se solicita otra vez)
+  var routingControl = null;
+
+  function drawRoute(userLat, userLng) {
+    // Añadir marcador del usuario
+    L.marker([userLat, userLng]).addTo(map)
+      .bindPopup("Tu ubicación")
+      .openPopup();
+
+    // Si ya hay un routingControl, removerlo
+    if (routingControl) {
+      map.removeControl(routingControl);
+    }
+
+    // Dibujar ruta con Leaflet Routing Machine
+    routingControl = L.Routing.control({
+      waypoints: [
+        L.latLng(userLat, userLng), // inicio: usuario
+        L.latLng(lat, lng)          // destino: salón
+      ],
+      routeWhileDragging: true,
+      language: 'es',
+      showAlternatives: true,
+      lineOptions: {
+        styles: [{color: 'blue', opacity: 0.7, weight: 5}]
+      }
+    }).addTo(map);
+  }
+
+  function requestRoute() {
+    if (!navigator.geolocation) {
+      alert("Tu navegador no soporta geolocalización.");
+      return;
+    }
+
     navigator.geolocation.getCurrentPosition(function(position) {
       var userLat = position.coords.latitude;
       var userLng = position.coords.longitude;
-
-      // Marcador del usuario
-      L.marker([userLat, userLng]).addTo(map)
-        .bindPopup("Tu ubicación")
-        .openPopup();
-
-      // Dibujar ruta con Leaflet Routing Machine
-      L.Routing.control({
-        waypoints: [
-          L.latLng(userLat, userLng), // inicio: usuario
-          L.latLng(lat, lng)          // destino: salón
-        ],
-        routeWhileDragging: true,
-        language: 'es',
-        showAlternatives: true,
-        lineOptions: {
-          styles: [{color: 'blue', opacity: 0.7, weight: 5}]
-        }
-      }).addTo(map);
+      drawRoute(userLat, userLng);
+      // ocultar el botón si la ruta se muestra correctamente
+      var btn = document.getElementById('routeBtn');
+      if (btn) btn.style.display = 'none';
     }, function(error) {
       console.error("Error de geolocalización:", error);
-      alert("No se pudo obtener tu ubicación. Revisa permisos o prueba desde http://localhost");
+      // Mostrar mensaje más útil según el error
+      if (error.code === error.PERMISSION_DENIED) {
+        alert("Permiso de ubicación denegado. Activa la ubicación para mostrar la ruta.");
+      } else {
+        alert("No se pudo obtener tu ubicación. Revisa permisos o prueba desde http://localhost");
+      }
+      // dejar visible el botón para que el usuario pueda intentarlo manualmente
+      var btn = document.getElementById('routeBtn');
+      if (btn) btn.style.display = 'inline-block';
     });
-  } else {
-    alert("Tu navegador no soporta geolocalización.");
   }
+
+  // Conectar el botón Mostrar ruta
+  var routeBtn = document.getElementById('routeBtn');
+  if (routeBtn) {
+    routeBtn.addEventListener('click', function() {
+      routeBtn.disabled = true;
+      requestRoute();
+      // reactivar el botón en 5s por si falla
+      setTimeout(function(){ if(routeBtn) routeBtn.disabled = false; }, 5000);
+  
+    });
+  }
+
+  // Intento automático al cargar (puede pedir permiso). Si falla, el botón permitirá reintento.
+  requestRoute();
 });
