@@ -217,3 +217,15 @@ a:hover {
     padding: 8px 12px;
     font-size: 20px;
 }
+hr{
+    border: none;
+    height: 2px;
+    background-color: #ddd;
+    margin: 1.5rem 0;
+}
+/* Estilos para listas */
+ul{
+    text-align: left;
+    display: inline-block;
+    margin-top: 0;
+}
