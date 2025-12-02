@@ -91,6 +91,14 @@ html {
   flex-shrink: 0;
 }
 
+/* Contenedor por id usado en publIc/index.html */
+#map {
+  border-radius: 5%;
+  width: 96%;
+  max-width: 900px;
+  height: 500px; /* altura necesaria para que Leaflet muestre el mapa */
+  margin: 2% auto;
+}
 .contact-links {
   flex: 1;
   min-width: 250px;
