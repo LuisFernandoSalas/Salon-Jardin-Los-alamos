@@ -34,6 +34,7 @@ if (navigator.geolocation) {
       ],
       routeWhileDragging: true,
       language: 'es',
+      showAlternatives: true,
       lineOptions: {
         styles: [{color: 'blue', opacity: 0.7, weight: 5}]
       }
