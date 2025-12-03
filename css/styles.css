@@ -14,7 +14,7 @@ html {
   background-color: #E1E1E1;
 }
 /* === MENÚ PRINCIPAL === */
-.menu {
+.menu{
   display: flex;
   align-items: center;
   gap: 12px;
@@ -22,8 +22,8 @@ html {
   width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
+  justify-content: center;
 }
-
 .menu .logo {
   width: 80px;
   height: 80px;
@@ -32,19 +32,26 @@ html {
   border-radius: 5%;
   flex-shrink: 0;
 }
-
-.menu h1 {
-  margin: 0;
-  font-size: clamp(1rem, 4vw, 1.6rem);
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 2rem;
-  line-height: 1.1;
-  text-align: left;
-  flex: 1;
-  min-width: 200px;
-  font-weight: 600;
+/* nuevo contenedor para apilar h1 y h2 */
+.menu .titles{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente h1 y h2 respecto al logo */
+  gap: 4px;
 }
-
+.menu h1{
+  margin: 0;
+  font-size: clamp(1.5rem);
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 30%;
+}
+.menu .subText{
+  margin: 0;
+  font-size: clamp(0.8rem);
+  font-weight: 400;
+  color: #555;
+  font-family: 'Times New Roman', Times, serif;
+}
 /* === BARRA DE NAVEGACIÓN === */
 .bar {
   padding: 1%;
