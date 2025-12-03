@@ -2,55 +2,63 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body {
   background-color: #E1E1E1 ;
   background-size: cover;
-  font-family: 'Segoe UI', 'Trebuchet MS', 'Georgia', serif;
 }
 
 html {
+  font-family: 'Times New Roman', Times, serif;
   background-color: #E1E1E1;
 }
 /* === MENÚ PRINCIPAL === */
-.menu{
+/* MENU: logo a la izquierda, títulos centrados y responsive */
+.menu {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 1%;
+  align-items: center;        /* alinea verticalmente logo y textos */
+  justify-content: center;    /* centra el bloque completo en la página */
+  gap: 16px;
+  padding: 12px 16px;
   width: 100%;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
-.menu .logo {
-  width: 80px;
-  height: 80px;
-  display: block;
-  position: static;
-  border-radius: 5%;
+
+/* logo fijo a la izquierda del bloque de títulos, centrado verticalmente */
+.menu .logo{
+  width: 84px;
+  height: auto;
   flex-shrink: 0;
+  display: block;
+  border-radius: 6px;
 }
-/* nuevo contenedor para apilar h1 y h2 */
+/* contenedor que apila el título y el subtítulo */
 .menu .titles{
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centra verticalmente h1 y h2 respecto al logo */
+  align-items: center;        /* centra h1 y subText horizontalmente */
+  justify-content: center;
   gap: 4px;
+  min-width: 0;
 }
+/* título principal grande y siempre centrado */
 .menu h1{
   margin: 0;
-  font-size: clamp(1.5rem);
-  font-family: 'Times New Roman', Times, serif;
-  margin-left: 30%;
+  font-size: clamp(1.2rem, 4.5vw, 2.4rem); /* grande y responsive */
+  line-height: 1.05;
+  text-align: center;
+  font-weight: 700;
 }
+/* subtítulo más pequeño, debajo del h1 */
 .menu .subText{
   margin: 0;
   font-size: clamp(0.8rem);
-  font-weight: 400;
   color: #555;
-  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  font-weight: 400;
 }
 /* === BARRA DE NAVEGACIÓN === */
 .bar {
@@ -340,24 +348,19 @@ a:hover {
 /* === RESPONSIVE: TABLETS (768px) === */
 @media (max-width: 768px) {
   .menu {
+    flex-direction: column;
     gap: 8px;
-    padding: 1.5%;
+    padding: 10px;
   }
-
-  .menu .logo {
-    width: 60px;
-    height: 60px;
+ .menu .logo {
+    width: 64px;
   }
-
-  .menu h1 {
-    font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+  .menu h1{
+    font-size: clamp(1rem, 5.5vw, 1.6rem);
   }
-
-  .bar {
-    gap: 12px;
-    padding: 1.5%;
+  .menu .subText{
+    font-size: clamp(0.75rem, 2.6vw, 0.95rem);
   }
-
   .bar a {
     padding: 6px 10px;
     font-size: clamp(11px, 1.3vw, 14px);
